@@ -51,7 +51,7 @@ const Form = () => {
         var action = (e) => {
             axios.get("/users/" + country)
                 .then(res => {
-                    console.log(res.data)
+
                     setCountries(res.data)
                 })
                 .catch(err => {
