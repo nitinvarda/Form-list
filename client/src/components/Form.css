@@ -1,0 +1,36 @@
+.form-elem{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.form{
+    margin-top:60px;
+}
+.form-start{
+    width: 40%;
+    margin:auto;
+    margin-top:30px;
+    
+}
+.form-btn{
+    width: 25%;
+    margin-left:38%;
+}
+
+@media only screen and (max-width: 992px){
+    .form-start{
+        width: 50%;
+    }
+   
+
+
+}
+
+@media only screen and (max-width: 600px){
+    .form-start{
+        width: 90%;
+    }
+    
+
+
+}

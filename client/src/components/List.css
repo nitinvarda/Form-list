@@ -1,0 +1,39 @@
+.list-start{
+    width: 60%;
+    margin: auto;
+    margin-top: 80px;
+}
+.filter{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    
+}
+.select-filter{
+    width: 13%;
+    margin-top: -5px;
+}
+
+
+@media only screen and (max-width: 992px){
+    .list-start{
+        width: 80%;
+    }
+   
+
+
+}
+
+@media only screen and (max-width: 600px){
+    .list-start{
+        width: 100%;
+    }
+    .select-filter{
+        width: 20%;
+    }
+    
+
+
+}
