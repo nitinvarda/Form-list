@@ -6,7 +6,7 @@ const Form = () => {
     const [data, setData] = useState({
         name: '',
         dob: '',
-        country: '',
+        country: 'country',
         resume: ''
     })
     const [status, setStatus] = useState('')
