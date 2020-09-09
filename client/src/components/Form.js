@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './Form.css';
 
@@ -6,22 +6,12 @@ const Form = () => {
     const [data, setData] = useState({
         name: '',
         dob: '',
-        country: 'country',
+        country: '',
         resume: ''
     })
     const [status, setStatus] = useState('')
     const [countries, setCountries] = useState([])
     const { name, dob, country, resume } = data
-    useEffect(() => {
-        axios.get("/users/" + country)
-            .then(res => {
-                console.log(res.data)
-                setCountries(res.data)
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }, [country])
 
     const change = (e) => {
         setData({
@@ -57,12 +47,26 @@ const Form = () => {
                 console.log(err)
             })
     }
-
-    if (country) {
-
-        var suggestion = countries.map((filter, index) => <option key={index} value={filter.name} />)
+    if (country.length > 0) {
+        var action = (e) => {
+            axios.get("/users/" + country)
+                .then(res => {
+                    console.log(res.data)
+                    setCountries(res.data)
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
 
     }
+
+
+
+
+    var suggestion = countries.map((filter, index) => <option key={index} value={filter.name} />)
+
+
 
     return (
         <div className="form">
@@ -81,7 +85,7 @@ const Form = () => {
                 <div className="form-elem">
                     <label>Country</label>
                     <div>
-                        <input type="text" autoComplete="off" value={country} list="datalist" onChange={change} name="country" id="search" />
+                        <input type="text" autoComplete="off" value={country} list="datalist" onChange={change} onKeyPress={action} name="country" id="search" />
                         <datalist id="datalist"  >
                             {suggestion}
 
