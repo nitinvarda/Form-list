@@ -25,6 +25,10 @@ const List = () => {
         axios.post("/delete/" + e.target.id)
             .then(res => {
                 setDele(res.data)
+                setTimeout(() => {
+                    setDele('')
+
+                }, 1000)
             })
             .catch(err => {
                 console.log(err)
@@ -61,7 +65,7 @@ const List = () => {
                     {data.map(user => {
                         return (
 
-                            <tr>
+                            <tr key={user._id}>
 
                                 <td>{user.name}</td>
                                 <td>{user.dob}</td>

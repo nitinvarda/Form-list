@@ -88,7 +88,7 @@ app.post("/form", upload.single("resume"), (req, res) => {
   new_user.save(err => {
     console.log(err)
   })
-  return res.send("saved successfully")
+  return res.send("saved successfully open list to see record")
 
 })
 
@@ -113,11 +113,12 @@ app.get("/pdf/:filename", function (req, res) {
 
 app.post('/delete/:id', (req, res) => {
 
-  formusers.findOne(req.params.id, (err, data) => {
-    console.log(data)
+  formusers.findOne({ _id: req.params.id }, (err, data) => {
+    // console.log(data)
     if (err) return console.error(err);
     // find the specific id 
     gfs.find({ filename: data.resume }).toArray((err, file) => {
+      // console.log(file)
       // check for the imagefile
       if (!file || file.length === 0) {
         return res.status(404).json({
@@ -148,8 +149,8 @@ app.post('/delete/:id', (req, res) => {
   })
 
 
-
 })
+
 
 
 

@@ -42,6 +42,7 @@ const Form = () => {
             .then(res => {
 
                 setStatus(res.data)
+
             })
             .catch(err => {
                 console.log(err)
@@ -99,7 +100,7 @@ const Form = () => {
                 <br />
                 <button type="submit" className="btn btn-primary form-btn">Submit</button>
             </form>
-            {status ? (<h4>{status}</h4>) : (<div></div>)}
+            {status ? (<h4 style={{ textAlign: "center", marginTop: 10 }}>{status}</h4>) : (<div></div>)}
 
 
         </div>
