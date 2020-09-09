@@ -12,6 +12,17 @@ const Form = () => {
     const [status, setStatus] = useState('')
     const [countries, setCountries] = useState([])
     const { name, dob, country, resume } = data
+    useEffect(() => {
+        axios.get("/users/" + country)
+            .then(res => {
+                console.log(res.data)
+                setCountries(res.data)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [country])
+
     const change = (e) => {
         setData({
             ...data,
@@ -46,16 +57,7 @@ const Form = () => {
                 console.log(err)
             })
     }
-    useEffect(() => {
-        axios.get("/users/" + country)
-            .then(res => {
 
-                setCountries(res.data)
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }, [country])
     if (country) {
 
         var suggestion = countries.map((filter, index) => <option key={index} value={filter.name} />)
